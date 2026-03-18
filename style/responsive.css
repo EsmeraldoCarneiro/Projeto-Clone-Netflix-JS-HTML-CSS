@@ -1,0 +1,59 @@
+/* --- DISPOSITIVOS MÓVEIS (ATÉ 700PX) --- */
+@media screen and (max-width: 700px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header .logo {
+        margin-bottom: 10px;
+        font-size: 30px; /* Logo menor no celular */
+    }
+
+    header nav a {
+        margin: 0 8px;
+        font-size: 14px;
+    }
+
+    .titulo {
+        font-size: 40px; /* Título não vaza da tela */
+        text-align: center;
+    }
+
+    .descricao {
+        font-size: 15px;
+        text-align: center;
+        margin: 0 auto 20px auto;
+    }
+
+    .botoes {
+        display: flex;
+        flex-direction: column; /* Botões um embaixo do outro */
+        align-items: center;
+    }
+
+    .botao {
+        margin-top: 10px;
+        width: 100%; /* Botão largo para facilitar o clique */
+        justify-content: center;
+    }
+
+    /* Esconde as setas no mobile para não poluir a tela */
+    .owl-nav {
+        display: none !important;
+    }
+}
+
+/* --- TELAS GRANDES (ACIMA DE 1000PX) --- */
+@media screen and (min-width: 1000px) {
+    .descricao {
+        width: 50%;
+    }
+}
+
+/* --- AJUSTE PARA TABLETS (ENTRE 701PX E 999PX) --- */
+@media screen and (min-width: 701px) and (max-width: 999px) {
+    .descricao {
+        width: 70%;
+    }
+}
