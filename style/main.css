@@ -1,0 +1,205 @@
+/* --- VARIÁVEIS E RESET --- */
+:root {
+    --amarelo: #faeb15;
+    --preto: #141414;
+    --preto-suave: #181818;
+    --branco: #ffffff;
+    --cinza: #AAA;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--preto);
+    font-family: 'Arial', sans-serif;
+    color: var(--branco);
+    overflow-x: hidden;
+}
+
+/* --- HEADER (MENU FIXO COM EFEITO GLASS) --- */
+header {
+    position: sticky;
+    top: 0;
+    background: rgba(20, 20, 20, 0.8); /* Fundo semi-transparente */
+    -webkit-backdrop-filter: blur(10px);      /* Efeito de desfoque ao fundo */
+
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+header .logo {
+    color: var(--amarelo);
+    font-family: 'Arial Black', sans-serif;
+    font-size: 40px;
+    margin-left: 15px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--cinza);
+    margin-right: 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: var(--branco);
+}
+
+/* --- COMPONENTES GERAIS --- */
+.container {
+    padding: 0 4%;
+}
+
+.botao {
+    background-color: rgba(250, 235, 21, 0.3);
+    border: none;
+    color: var(--branco);
+    padding: 12px 28px;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.botao i {
+    margin-right: 8px;
+}
+
+.botao:hover {
+    background-color: var(--amarelo);
+    color: var(--preto);
+}
+
+/* --- BANNER PRINCIPAL (ESTILO NETFLIX) --- */
+.filme-principal, .serie-principal, .movie-principal, .documentario-principal {
+    height: 85vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: linear-gradient(to top, var(--preto) 5%, transparent 95%);
+}
+
+.filme-principal { 
+    background-image: linear-gradient(to top, var(--preto), transparent), url('../img/capa.jpg'); 
+    background-position: center top; 
+}
+.serie-principal { 
+    background-image: linear-gradient(to top, var(--preto), transparent), url('../img/capa1.jpg'); 
+    background-position: center top; 
+}
+.movie-principal { 
+    background-image: linear-gradient(to top, var(--preto), transparent), url('../img/capa2.jpg'); 
+    background-position: center 20%; 
+}
+.documentario-principal { 
+    background-image: linear-gradient(to top, var(--preto), transparent), url('../img/capa3.jpg'); 
+    background-position: center 20%; 
+}
+
+.titulo {
+    font-size: clamp(35px, 6vw, 65px);
+    font-family: 'Copperplate', fantasy;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.descricao {
+    margin-bottom: 30px;
+    max-width: 650px;
+    font-size: 18px;
+    line-height: 1.5;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+/* --- CONFIGURAÇÃO DO CARROSSEL (O ROLO) --- */
+.owl-carousel {
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Ajuste para o zoom não ser cortado nas bordas do carrossel */
+.owl-stage-outer {
+    padding: 30px 0;
+}
+
+.item {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.item img {
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+/* --- EFEITO DE ZOOM E DESTAQUE --- */
+.item:hover {
+    transform: scale(1.15); /* Zoom de 15% */
+    z-index: 50;
+}
+
+.item:hover img {
+    box-shadow: 0px 0px 20px 5px rgba(250, 235, 21, 0.4); /* Brilho Amarelo */
+    border: 2px solid var(--amarelo);
+}
+
+/* --- CONFIGURAÇÃO DAS SETAS (OWL NAV) --- */
+.owl-nav {
+    display: block !important; 
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: 999;
+    pointer-events: none;
+}
+
+.owl-prev, .owl-next {
+    position: absolute !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: var(--amarelo) !important;
+    font-size: 40px !important;
+    width: 50px;
+    height: 100px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer !important;
+    pointer-events: all !important;
+    border: none !important;
+    transition: 0.3s;
+}
+
+.owl-prev { left: 0; }
+.owl-next { right: 0; }
+
+.owl-prev:hover, .owl-next:hover {
+    background-color: var(--amarelo) !important;
+    color: black !important;
+}
+
+/* --- CORREÇÃO DE MODERNIDADE (SILENCIAR AVISOS DO EDGE) --- */
+.owl-carousel, .owl-item, .owl-stage {
+    backface-visibility: hidden;
+    transform: translate3d(0,0,0);
+}
